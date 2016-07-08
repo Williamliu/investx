@@ -1,0 +1,77 @@
+﻿@using EventApp.Models
+@model eventViewModel
+@using (Ajax.BeginForm("getEvent", "event", new AjaxOptions { UpdateTargetId = "result", InsertionMode = InsertionMode.Replace }))
+{
+    <fieldset>
+        <legend>Search Criteria</legend>
+        <div style="padding:10px;">
+            <span>Keyword: </span>@Html.EditorFor(p => p.navi.keywords, new { htmlAttributes = new { style = "width:120px" } })
+            <span style="margin-left:30px;">Page: </span>@Html.EditorFor(p => p.navi.pageNumber, new { htmlAttributes = new { style = "width:60px" } }) <b>/</b> @Html.DisplayFor(p => p.navi.pageTotal)
+            <span style="margin-left:30px;">Page Size: </span>@Html.EditorFor(p => p.navi.pageSize, new { htmlAttributes = new { style = "width:60px" } })
+            <input type="submit" style="margin-left:30px;" value="Search" />
+        </div>
+    </fieldset>
+}
+<br />
+<span style="font-size:1.2em;font-weight:600;">Current Selection:</span>
+<table cellpadding="2" cellspacing="5">
+    <tr>
+        <td>Keyword: </td>
+        <td style="color:blue;">
+            @Model.navi.keywords
+        </td>
+        <td>Total Events: </td>
+        <td style="color:blue;">
+            @Model.navi.itemTotal
+        </td>
+        <td>Page No: </td>
+        <td style="color:blue;">
+            @Model.navi.pageNumber
+            <b>/</b>
+            @Model.navi.pageTotal
+        </td>
+        <td>Page Size: </td>
+        <td style="color:blue;">
+            @Model.navi.pageSize
+        </td>
+    </tr>
+</table>
+
+<table border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td class="head">SN</td>
+        <td class="head">Image</td>
+        <td class="head">Event Title</td>
+        <td class="head">Start</td>
+        <td class="head">End</td>
+        <td class="head">Location</td>
+        <td class="head">Performers</td>
+    </tr>
+    
+
+    @{ 
+        int cnt = 0;
+        foreach (eventEntity evt in Model.events)
+        {
+            cnt++;
+            <tr>
+                <td>@cnt</td>
+                <td><img src="@evt.imageURL" /></td>
+                <td valign="top">@evt.title</td>
+                <td valign="top">@evt.event_start</td>
+                <td valign="top">@evt.event_end</td>
+                <td valign="top">@evt.location</td>
+                <td valign="top">
+                    @{
+                        int per_cnt = 0;
+                        foreach (performer perf in evt.performers)
+                        {
+                            per_cnt++;
+                            @(per_cnt + ". ")<a href = "@perf.url" target = "_blank" >@perf.name</a><br />
+                        }
+                   }
+                </td>
+            </tr>
+        }
+     }
+</table>

@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section scripts {
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
+}
+<span style="font-size:1.2em; font-weight:700;">Event List Demo :  Using Ajax to load event data, the main page don't need to refresh everytime</span>:<br />
+<div id="result">
+@Html.Action("getEvent", "event")
+</div>
