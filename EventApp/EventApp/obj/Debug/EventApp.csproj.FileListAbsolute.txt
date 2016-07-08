@@ -172,6 +172,5 @@ D:\Temp5\investx\EventApp\EventApp\bin\System.Web.WebPages.xml
 D:\Temp5\investx\EventApp\EventApp\bin\System.Web.WebPages.Deployment.xml
 D:\Temp5\investx\EventApp\EventApp\bin\System.Web.WebPages.Razor.xml
 D:\Temp5\investx\EventApp\EventApp\bin\Antlr3.Runtime.pdb
-D:\Temp5\investx\EventApp\EventApp\obj\Debug\EventApp.csprojResolveAssemblyReference.cache
 D:\Temp5\investx\EventApp\EventApp\obj\Debug\EventApp.dll
 D:\Temp5\investx\EventApp\EventApp\obj\Debug\EventApp.pdb
