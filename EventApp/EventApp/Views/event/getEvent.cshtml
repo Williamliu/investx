@@ -1,13 +1,14 @@
 ﻿@using EventApp.Models
 @model eventViewModel
-@using (Ajax.BeginForm("getEvent", "event", new AjaxOptions { UpdateTargetId = "result", InsertionMode = InsertionMode.Replace }))
+
+@using (Ajax.BeginForm("getEvent", "event", new AjaxOptions { OnBegin = "callbegin()", OnSuccess="callsuccess()", OnComplete="callcomplete()", OnFailure="callfailure()", UpdateTargetId = "result", InsertionMode = InsertionMode.Replace }))
 {
     <fieldset>
         <legend>Search Criteria</legend>
         <div style="padding:10px;">
             <span>Keyword: </span>@Html.EditorFor(p => p.navi.keywords, new { htmlAttributes = new { style = "width:120px" } })
             <span style="margin-left:10px;">Location: </span>@Html.EditorFor(p => p.navi.location, new { htmlAttributes = new { style = "width:120px" } })
-            <input type="submit" name="submitButton" style="margin-left:10px;" value="Search" />
+            <input class="btn btn-info" type="submit" name="submitButton" style="margin-left:10px;" value="Search" />
         </div>
     </fieldset>
     <span style="font-size:1.2em;font-weight:600;">Current Selection:</span>
@@ -38,24 +39,24 @@
         </tr>
     </table>
     <br />
-    <div style="position:relative;display:block;height:30px;">
+    <div style="position:relative;display:block;height:40px;">
         <div style="float:left;">
-            <input type="submit" name="submitButton" value="First" />
-            <input type="submit" name="submitButton" value="Previous" />
+            <input class="btn btn-primary" type="submit" name="submitButton" value="First" />
+            <input class="btn btn-primary" type="submit" name="submitButton" value="Previous" />
             <span>Page: </span>@Html.EditorFor(p => p.navi.pageNumber, new { htmlAttributes = new { style = "width:60px" } }) <b>/</b> @Html.DisplayFor(p => p.navi.pageTotal)
-            <input type="submit" name="submitButton" value="Go" />
-            <input type="submit" name="submitButton" value="Next" />
-            <input type="submit" name="submitButton" value="Last" />
+            <input class="btn btn-info" type="submit" name="submitButton" value="Go" />
+            <input class="btn btn-primary" type="submit" name="submitButton" value="Next" />
+            <input class="btn btn-primary" type="submit" name="submitButton" value="Last" />
         </div>
         <div style="float:right;">
             <span>Page Size: </span>@Html.EditorFor(p => p.navi.pageSize, new { htmlAttributes = new { style = "width:60px" } })
             @Html.HiddenFor(p => p.navi.pageTotal)
             @Html.HiddenFor(p => p.navi.itemTotal)
-            <input type="submit" name="submitButton" value="Go" />
+            <input class="btn btn-info" type="submit" name="submitButton" value="Go" />
         </div>
     </div>
 } @* End of Ajax Form *@
-<table border="1" cellpadding="2" cellspacing="0">
+<table id="eventlist" border="1" cellpadding="2" cellspacing="0">
     <tr>
         <td class="head">SN</td>
         <td class="head">Image</td>

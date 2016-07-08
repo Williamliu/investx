@@ -3,8 +3,29 @@
 }
 @section scripts {
     <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/myplugin/jquery.lwh.loading.js")"></script>
+    <link type="text/css" href="@Url.Content("~/Scripts/myplugin/css/jquery.lwh.loading.css")" rel="stylesheet" />
+
+    <script>
+        function callbegin() {
+                $("#wait").loadShow();
+        }
+        function callsuccess() {
+                $("#wait").loadHide();
+        }
+        function callcomplete() {
+                $("#wait").loadHide();
+        }
+        function callfailure() {
+                $("#wait").loadHide();
+        }
+        $(function () {
+                $("#wait").lwhLoading({ loadMsg: "WAITING..." });
+        });
+    </script>
 }
 <span style="font-size:1.2em; font-weight:700;">Event List Demo :  Using Ajax to load event data, the main page don't need to refresh everytime</span>:<br />
 <div id="result">
 @Html.Action("getEvent", "event")
 </div>
+<div id="wait" class="lwhLoading"></div>
