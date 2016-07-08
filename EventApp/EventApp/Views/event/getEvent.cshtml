@@ -50,6 +50,7 @@
         <div style="float:right;">
             <span>Page Size: </span>@Html.EditorFor(p => p.navi.pageSize, new { htmlAttributes = new { style = "width:60px" } })
             @Html.HiddenFor(p => p.navi.pageTotal)
+            @Html.HiddenFor(p => p.navi.itemTotal)
             <input type="submit" name="submitButton" value="Go" />
         </div>
     </div>

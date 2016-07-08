@@ -26,8 +26,10 @@ namespace EventApp.Models
 
         public void naviSafeCheck()
         {
-            this.navi.pageNumber = this.navi.pageNumber <= 0 ? 1 : this.navi.pageNumber;
             this.navi.pageSize = this.navi.pageSize <= 0 ? 20 : this.navi.pageSize;
+            this.navi.pageNumber = this.navi.pageNumber <= 0 ? 1 : this.navi.pageNumber;
+            this.navi.pageNumber = this.navi.pageNumber > this.navi.pageTotal? this.navi.pageTotal : this.navi.pageNumber;
+            this.navi.pageNumber = this.navi.pageNumber > (int)Math.Ceiling((decimal)this.navi.itemTotal / this.navi.pageSize) ? (int)Math.Ceiling((decimal)this.navi.itemTotal / this.navi.pageSize) : this.navi.pageNumber;
             this.navi.keywords = string.IsNullOrEmpty(this.navi.keywords) ? "" : this.navi.keywords.Trim();
             this.navi.location = string.IsNullOrEmpty(this.navi.location) ? "" : this.navi.location.Trim();
 
