@@ -6,42 +6,54 @@
         <legend>Search Criteria</legend>
         <div style="padding:10px;">
             <span>Keyword: </span>@Html.EditorFor(p => p.navi.keywords, new { htmlAttributes = new { style = "width:120px" } })
-            <span style="margin-left:30px;">Location: </span>@Html.EditorFor(p => p.navi.location, new { htmlAttributes = new { style = "width:120px" } })
-            <span style="margin-left:30px;">Page: </span>@Html.EditorFor(p => p.navi.pageNumber, new { htmlAttributes = new { style = "width:60px" } }) <b>/</b> @Html.DisplayFor(p => p.navi.pageTotal)
-            <span style="margin-left:30px;">Page Size: </span>@Html.EditorFor(p => p.navi.pageSize, new { htmlAttributes = new { style = "width:60px" } })
-            <input type="submit" style="margin-left:30px;" value="Search" />
+            <span style="margin-left:10px;">Location: </span>@Html.EditorFor(p => p.navi.location, new { htmlAttributes = new { style = "width:120px" } })
+            <input type="submit" name="submitButton" style="margin-left:10px;" value="Search" />
         </div>
     </fieldset>
-}
-<br />
-<span style="font-size:1.2em;font-weight:600;">Current Selection:</span>
-<table cellpadding="2" cellspacing="5">
-    <tr>
-        <td>Keyword: </td>
-        <td style="color:blue;">
-            @Model.navi.keywords
-        </td>
-        <td>Location: </td>
-        <td style="color:blue;">
-            @Model.navi.location
-        </td>
-        <td>Total Events: </td>
-        <td style="color:blue;">
-            @Model.navi.itemTotal
-        </td>
-        <td>Page No: </td>
-        <td style="color:blue;">
-            @Model.navi.pageNumber
-            <b>/</b>
-            @Model.navi.pageTotal
-        </td>
-        <td>Page Size: </td>
-        <td style="color:blue;">
-            @Model.navi.pageSize
-        </td>
-    </tr>
-</table>
-
+    <span style="font-size:1.2em;font-weight:600;">Current Selection:</span>
+    <table cellpadding="2" cellspacing="5">
+        <tr>
+            <td>Keyword: </td>
+            <td style="color:blue;">
+                @Model.navi.keywords
+            </td>
+            <td>Location: </td>
+            <td style="color:blue;">
+                @Model.navi.location
+            </td>
+            <td>Total Events: </td>
+            <td style="color:blue;">
+                @Model.navi.itemTotal
+            </td>
+            <td>Page No: </td>
+            <td style="color:blue;">
+                @Model.navi.pageNumber
+                <b>/</b>
+                @Model.navi.pageTotal
+            </td>
+            <td>Page Size: </td>
+            <td style="color:blue;">
+                @Model.navi.pageSize
+            </td>
+        </tr>
+    </table>
+    <br />
+    <div style="position:relative;display:block;height:30px;">
+        <div style="float:left;">
+            <input type="submit" name="submitButton" value="First" />
+            <input type="submit" name="submitButton" value="Previous" />
+            <span>Page: </span>@Html.EditorFor(p => p.navi.pageNumber, new { htmlAttributes = new { style = "width:60px" } }) <b>/</b> @Html.DisplayFor(p => p.navi.pageTotal)
+            <input type="submit" name="submitButton" value="Go" />
+            <input type="submit" name="submitButton" value="Next" />
+            <input type="submit" name="submitButton" value="Last" />
+        </div>
+        <div style="float:right;">
+            <span>Page Size: </span>@Html.EditorFor(p => p.navi.pageSize, new { htmlAttributes = new { style = "width:60px" } })
+            @Html.HiddenFor(p => p.navi.pageTotal)
+            <input type="submit" name="submitButton" value="Go" />
+        </div>
+    </div>
+} @* End of Ajax Form *@
 <table border="1" cellpadding="2" cellspacing="0">
     <tr>
         <td class="head">SN</td>

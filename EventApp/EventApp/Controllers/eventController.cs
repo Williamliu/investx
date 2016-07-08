@@ -9,14 +9,33 @@ using System.Net;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Reflection;
 
 namespace EventApp.Controllers
 {
     public class eventController : Controller
     {
         // GET: event
-        public PartialViewResult getEvent(eventViewModel evt)
+        public ActionResult getEvent(eventViewModel evt, string submitButton)
         {
+            switch(submitButton)
+            {
+                case "First":
+                    evt.navi.pageNumber = 1;
+                    break;
+                case "Previous":
+                    evt.navi.pageNumber--;
+                    break;
+                case "Next":
+                    evt.navi.pageNumber++;
+                    break;
+                case "Last":
+                    evt.navi.pageNumber = evt.navi.pageTotal;
+                    break;
+                case "Search":
+                case "Go":
+                    break;
+            }
             string result = string.Empty;
             ModelState.Clear();
             evt.naviSafeCheck();
@@ -25,7 +44,6 @@ namespace EventApp.Controllers
             //I use  fiddler4  to compare the header.    remove Expect:100-continue ,  it works fine
             //So I search how to using c# code to remove Expect: 100-continue 
             ServicePointManager.Expect100Continue = false;
-
 
             using (HttpClient client = new HttpClient())
             {
@@ -52,11 +70,7 @@ namespace EventApp.Controllers
                     result = response.Content.ReadAsStringAsync().Result;
                     evt.jsonParse(result);
                 }
-
-
             }
-
-           
 
 
             // These code also works fine
@@ -78,5 +92,4 @@ namespace EventApp.Controllers
             return PartialView(evt);
         }
     }
-
 }
