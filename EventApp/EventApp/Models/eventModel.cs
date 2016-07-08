@@ -20,7 +20,7 @@ namespace EventApp.Models
         public List<eventEntity> events { get; set; }
         public eventViewModel()
         {
-            this.navi = new eventNavi { pageNumber = 1, pageSize = 20, pageTotal = 0, keywords = "Hotel" };
+            this.navi = new eventNavi { pageNumber = 1, pageSize = 20, pageTotal = 0, keywords = "Hotel", location="San Diago" };
             this.events = new List<eventEntity>();
         }
 
@@ -28,7 +28,8 @@ namespace EventApp.Models
         {
             this.navi.pageNumber = this.navi.pageNumber <= 0 ? 1 : this.navi.pageNumber;
             this.navi.pageSize = this.navi.pageSize <= 0 ? 20 : this.navi.pageSize;
-            this.navi.keywords = string.IsNullOrEmpty(this.navi.keywords) ? "Hotel" : this.navi.keywords.Trim();
+            this.navi.keywords = string.IsNullOrEmpty(this.navi.keywords) ? "" : this.navi.keywords.Trim();
+            this.navi.location = string.IsNullOrEmpty(this.navi.location) ? "" : this.navi.location.Trim();
 
         }
 
@@ -123,6 +124,7 @@ namespace EventApp.Models
         public int pageTotal { get; set; }
         public int itemTotal { get; set; }
         public string keywords { get; set; }
+        public string location { get; set; }
     }
 
     public class eventEntity

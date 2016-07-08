@@ -6,6 +6,7 @@
         <legend>Search Criteria</legend>
         <div style="padding:10px;">
             <span>Keyword: </span>@Html.EditorFor(p => p.navi.keywords, new { htmlAttributes = new { style = "width:120px" } })
+            <span style="margin-left:30px;">Location: </span>@Html.EditorFor(p => p.navi.location, new { htmlAttributes = new { style = "width:120px" } })
             <span style="margin-left:30px;">Page: </span>@Html.EditorFor(p => p.navi.pageNumber, new { htmlAttributes = new { style = "width:60px" } }) <b>/</b> @Html.DisplayFor(p => p.navi.pageTotal)
             <span style="margin-left:30px;">Page Size: </span>@Html.EditorFor(p => p.navi.pageSize, new { htmlAttributes = new { style = "width:60px" } })
             <input type="submit" style="margin-left:30px;" value="Search" />
@@ -19,6 +20,10 @@
         <td>Keyword: </td>
         <td style="color:blue;">
             @Model.navi.keywords
+        </td>
+        <td>Location: </td>
+        <td style="color:blue;">
+            @Model.navi.location
         </td>
         <td>Total Events: </td>
         <td style="color:blue;">

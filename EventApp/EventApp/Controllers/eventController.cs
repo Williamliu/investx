@@ -37,7 +37,7 @@ namespace EventApp.Controllers
                 {
                     new KeyValuePair<string, string>("app_key", "dKqgHG6c7xhNs2Kp"),
                     new KeyValuePair<string, string>("keywords", evt.navi.keywords),
-                    //new KeyValuePair<string, string>("location", "San Diago"),
+                    new KeyValuePair<string, string>("location", evt.navi.location),
                     new KeyValuePair<string, string>("date",    "Future"),
                     new KeyValuePair<string, string>("page_number",     evt.navi.pageNumber.ToString()),
                     new KeyValuePair<string, string>("page_size",       evt.navi.pageSize.ToString())
