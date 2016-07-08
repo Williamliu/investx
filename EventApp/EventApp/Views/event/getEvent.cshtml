@@ -56,41 +56,43 @@
         </div>
     </div>
 } @* End of Ajax Form *@
-<table id="eventlist" border="1" cellpadding="2" cellspacing="0">
-    <tr>
-        <td class="head">SN</td>
-        <td class="head">Image</td>
-        <td class="head">Event Title</td>
-        <td class="head">Start</td>
-        <td class="head">End</td>
-        <td class="head">Location</td>
-        <td class="head">Performers</td>
-    </tr>
-    
+<div class="table-responsive">
+    <table class="table table-striped" cellpadding="2" cellspacing="0">
+        <tr>
+            <td class="head">SN</td>
+            <td class="head">Image</td>
+            <td class="head">Event Title</td>
+            <td class="head">Start</td>
+            <td class="head">End</td>
+            <td class="head">Location</td>
+            <td class="head">Performers</td>
+        </tr>
 
-    @{ 
-        int cnt = 0;
-        foreach (eventEntity evt in Model.events)
-        {
-            cnt++;
-            <tr>
-                <td>@cnt</td>
-                <td><img src="@evt.imageURL" /></td>
-                <td valign="top">@evt.title</td>
-                <td valign="top">@evt.event_start</td>
-                <td valign="top">@evt.event_end</td>
-                <td valign="top">@evt.location</td>
-                <td valign="top">
-                    @{
-                        int per_cnt = 0;
-                        foreach (performer perf in evt.performers)
-                        {
-                            per_cnt++;
-                            @(per_cnt + ". ")<a href = "@perf.url" target = "_blank" >@perf.name</a><br />
+
+        @{
+            int cnt = 0;
+            foreach (eventEntity evt in Model.events)
+            {
+                cnt++;
+                <tr>
+                    <td>@cnt</td>
+                    <td><img src="@evt.imageURL" /></td>
+                    <td valign="top">@evt.title</td>
+                    <td valign="top">@evt.event_start</td>
+                    <td valign="top">@evt.event_end</td>
+                    <td valign="top">@evt.location</td>
+                    <td valign="top">
+                        @{
+                            int per_cnt = 0;
+                            foreach (performer perf in evt.performers)
+                            {
+                                per_cnt++;
+                                @(per_cnt + ". ")<a href="@perf.url" target="_blank">@perf.name</a><br />
+                            }
                         }
-                   }
-                </td>
-            </tr>
+                    </td>
+                </tr>
+                            }
         }
-     }
-</table>
+    </table>
+</div>
