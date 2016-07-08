@@ -1,0 +1,128 @@
+/************************************************************************************/
+/*  JQuery Plugin:  LOADING                                                       	*/
+/*  Author:	William Liu                                                            	*/
+/*  Date: 	2012-3-30      															*/
+/*  Files: 	jquery.lwh.loading.js ;  jquery.lwh.loading.css							*/
+/************************************************************************************/
+.lwhLoading {
+	display:				none;
+	width:					180px;
+	height:					100px;
+	
+	position:				fixed;
+	top:					50%;
+    margin-top:            -90px;
+	left:					50%;
+    margin-left:            -50px;
+
+	text-align:				center;
+	
+	background:				url(image/common/lwhLoading-frame.png);
+	background-position:	center center;
+	background-repeat:		no-repeat;
+}
+
+/* mask iframe and div */
+.lwhLoading-mask-ifrm {
+	display:	        none;
+	position:	        fixed;
+	border:		        1px solid #eeeeee; 
+	width:		        0px; 
+	height:		        0px; 
+	left:		        0px; 
+	top:		        0px;
+
+	filter:			    alpha(opacity:20);
+	opacity:			0.2;
+	background-color:	#000000;
+}
+
+.lwhLoading-mask-div {
+	display:	        none;
+	position:	        fixed;
+	border:             1px solid #eeeeee; 
+	width:              100%;
+	height:             100%; 
+	left:               0px; 
+	top:                0px;
+
+	filter:				alpha(opacity:20);
+	opacity:			0.2;
+	background-color:	#000000;
+}
+
+
+
+.lwhLoading-msgText {
+    color: 				#666666;
+    font-size: 			16px;
+    font-weight: 		bold;
+	
+	position:			relative;
+	top:				20px;
+	padding-left:		10px;
+	text-align:			center;
+}
+
+.lwhLoading-loadingImage {
+    display: 			inline-block;
+	width:				32px;
+	height:				32px;
+
+	position: 			relative;
+    top: 				30px;
+
+	background-image: 	url(image/common/lwhLoading-loading.gif);
+	background-position:center center;
+	background-repeat:	no-repeat;
+}
+
+
+/************************************************************************************/
+/*  JQuery Plugin Tooltips									                       	*/
+/*  Author:	William Liu                                                            	*/
+/*  Date: 	2012-5-29      															*/
+/*  Files: 	jquery.lwh.tooltips.js ;  jquery.lwh.tooltips.css						*/
+/************************************************************************************/
+
+/* Tooltips  Dive ayout CSS */
+.lwhTooltip {
+		display:			none;
+        min-width:			200px; 
+		padding:			20px;
+
+		position:			fixed;
+		top:				50%; 
+        margin-top:          -36px;
+		left:				50%; 
+        margin-left:        -100px;
+        	
+
+		border:				1px solid #666666;
+		border-radius:		20px;
+		
+		background-color:	#dddddd;
+		box-shadow:			2px 5px 10px #888888;
+
+		overflow:			hidden;
+		text-align:			center;
+		vertical-align:		middle;
+		z-index:			99999;
+}
+
+.lwhTooltip-green {
+	color:					#222222;
+	background-color:		#8CEF6F; 
+}
+
+.lwhTooltip-red {
+	color:					#222222;
+	background-color:		#FCC625; 
+}
+
+.lwhTooltip_message {
+	display:				block;
+	font-size:				16px;
+	vertical-align:			middle;
+}
+
