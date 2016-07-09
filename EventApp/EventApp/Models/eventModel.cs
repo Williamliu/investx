@@ -65,11 +65,10 @@ namespace EventApp.Models
                             if (theEvent.Value<JObject>("image").Value<JObject>("thumb") != null)
                                 evtObj.imageURL = theEvent.Value<JObject>("image").Value<JObject>("thumb").Value<string>("url");
 
+                        #region Perfomers: there is issue: sometimes JObject ; sometimes JArray;  it is bad message format
                         var performers = theEvent.Value<JObject>("performers");
                         if (performers != null)
                         {
-                            // sometimes JObject ; sometimes JArray;  it is bad message format
-
                             try
                             {
                                 var performer = performers.Value<JObject>("performer");
@@ -110,6 +109,7 @@ namespace EventApp.Models
 
                             }
                         }
+                        #endregion
 
                         this.events.Add(evtObj);
                     }
