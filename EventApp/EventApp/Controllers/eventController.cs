@@ -18,7 +18,10 @@ namespace EventApp.Controllers
         // GET: event
         public ActionResult getEvent(eventViewModel evt, string submitButton)
         {
-            switch(submitButton)
+            //Pevent webpage remember the old value when render partial view
+            ModelState.Clear();
+
+            switch (submitButton)
             {
                 case "First":
                     evt.navi.pageNumber = 1;
@@ -36,9 +39,25 @@ namespace EventApp.Controllers
                 case "Go":
                     break;
             }
-            string result = string.Empty;
-            ModelState.Clear();
+
             evt.naviSafeCheck();
+
+            getDataFromEventFul(evt);
+
+            // when we can search criteria,  the pageNumber keep old value but pageTotal already changed.  
+            // in this case,  it will return nothing,  so we need to request the real last page(new pageTotal)
+            if (evt.navi.pageNumber > evt.navi.pageTotal)
+            {
+                evt.navi.pageNumber = evt.navi.pageTotal;
+                getDataFromEventFul(evt);
+            }
+            return PartialView(evt);
+        }
+
+        // pass class object :  send by reference,  so don't need return
+        public void getDataFromEventFul(eventViewModel evt)
+        {
+            string result = string.Empty;
 
             //Important: if request header include: Expect: 100-continue. always return error 417 
             //I use  fiddler4  to compare the header.    remove Expect:100-continue ,  it works fine
@@ -73,8 +92,8 @@ namespace EventApp.Controllers
             }
 
 
-            // These code also works fine
             /*
+            // These code works fine as well
             using (WebClient client = new WebClient())
             {
                 NameValueCollection postKeyValue = new NameValueCollection();
@@ -86,10 +105,10 @@ namespace EventApp.Controllers
                 postKeyValue["page_size"]   = evt.navi.pageSize.ToString();
                 byte[] respBytes = client.UploadValues("http://api.eventful.com/json/events/search", "POST", postKeyValue);
                 result = ASCIIEncoding.UTF8.GetString(respBytes);
-                ViewBag.result = result;
+                evt.jsonParse(result);
             }
             */
-            return PartialView(evt);
         }
+
     }
 }
