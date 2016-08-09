@@ -10,6 +10,7 @@ namespace EventApp
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        // this is staging from master
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
