@@ -13,7 +13,6 @@ using System.Reflection;
 
 namespace EventApp.Controllers
 {
-    // this is change by development
     public class eventController : Controller
     {
         // GET: event

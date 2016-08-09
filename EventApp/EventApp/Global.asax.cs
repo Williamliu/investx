@@ -8,7 +8,6 @@ using System.Web.Routing;
 
 namespace EventApp
 {
-    // this is good test for development
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
