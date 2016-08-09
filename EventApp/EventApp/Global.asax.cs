@@ -8,6 +8,7 @@ using System.Web.Routing;
 
 namespace EventApp
 {
+    // this is good test for development
     public class MvcApplication : System.Web.HttpApplication
     {
         // this is staging from master
