@@ -9,6 +9,7 @@ using System.Text;
 namespace EventApp.Controllers
 {
     // this is change master by master
+    // this is masteer
     public class HomeController : Controller
     {
         public ActionResult index()
