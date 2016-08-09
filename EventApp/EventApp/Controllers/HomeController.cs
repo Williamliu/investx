@@ -8,6 +8,7 @@ using System.Text;
 
 namespace EventApp.Controllers
 {
+    // this is change master by master
     public class HomeController : Controller
     {
         public ActionResult index()
